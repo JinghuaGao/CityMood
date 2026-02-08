@@ -5,7 +5,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            MoodCheckinView()
+            MoodSliderView()
                 .tabItem {
                     Label("打卡", systemImage: "plus.circle.fill")
                 }

@@ -5,7 +5,8 @@ class APIService {
     
     // MARK: - Configuration
     #if DEBUG
-    private let baseURL = "http://localhost:3000/api/v1"
+    // 家里 Mac mini 服务器地址
+    private let baseURL = "http://192.168.1.2:3000/api/v1"
     #else
     private let baseURL = "https://api.citymood.app/api/v1"
     #endif
