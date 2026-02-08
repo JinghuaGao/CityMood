@@ -1,0 +1,50 @@
+name: CityMood
+targets:
+  CityMood:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: CityMood
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.citymood.app
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        DEVELOPMENT_TEAM: ""
+        INFOPLIST_FILE: CityMood/Info.plist
+        GENERATE_INFOPLIST_FILE: YES
+    info:
+      path: CityMood/Info.plist
+      properties:
+        CFBundleDisplayName: "CityMood"
+        UILaunchScreen:
+          UIColorName: ""
+          UIImageName: ""
+        UIRequiredDeviceCapabilities: [armv7]
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        NSLocationWhenInUseUsageDescription: "需要您的位置来记录城市心情"
+    dependencies:
+      - sdk: MapKit.framework
+      - sdk: CoreLocation.framework
+  
+  CityMoodTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: CityMoodTests
+    dependencies:
+      - target: CityMood
+  
+  CityMoodUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: CityMoodUITests
+    dependencies:
+      - target: CityMood
