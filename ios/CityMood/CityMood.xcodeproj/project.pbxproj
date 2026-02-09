@@ -12,6 +12,7 @@
 		307F8D387D0DFC932A7E6370 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755E38C53CFA5190E5C2A5D /* ContentView.swift */; };
 		50571E81AC1DEEE5EF5AE1B5 /* MoodCheckinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81553025E5DE235EBBC6929 /* MoodCheckinView.swift */; };
 		5219F9FB19D8F77B8D35CD06 /* CityRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF99A34E1989A57E5FDB308 /* CityRankingView.swift */; };
+		6E91CDBBC7149EE1AF34C572 /* MoodSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BBE783057271A9E174A381 /* MoodSliderView.swift */; };
 		841EAF0621BF8C364264C831 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98835B788E55C3525CD3D92 /* CoreLocation.framework */; };
 		9011B74024816EAAFF8D4388 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5A2363FDAD614E250093BA /* APIService.swift */; };
 		986F14F1A4F6DDC530504319 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04507082CBDBA63CC4317E8F /* LocationService.swift */; };
@@ -42,6 +43,7 @@
 		04507082CBDBA63CC4317E8F /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		1133D6F672DD654945B9C8AC /* CityMoodUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CityMoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF99A34E1989A57E5FDB308 /* CityRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRankingView.swift; sourceTree = "<group>"; };
+		38BBE783057271A9E174A381 /* MoodSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSliderView.swift; sourceTree = "<group>"; };
 		4C8A3A2D3A9BB9355FB97803 /* MoodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCalendarView.swift; sourceTree = "<group>"; };
 		4D1F77CD45F975D2CBBB859C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4E1426B0735033E8D4AAC2D3 /* CityMood.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CityMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				C81553025E5DE235EBBC6929 /* MoodCheckinView.swift */,
+				38BBE783057271A9E174A381 /* MoodSliderView.swift */,
 			);
 			path = MoodCheckin;
 			sourceTree = "<group>";
@@ -204,14 +207,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		"TEMP_0AAE4F82-20E2-4BF1-9E1D-C174624121B0" /* Resources */ = {
+		"TEMP_31C3F082-9D21-4C85-A867-468C5C1AA277" /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		"TEMP_33DF5C9C-DA18-484E-9D0F-0EBB542B8B48" /* UI */ = {
+		"TEMP_F269AC2D-7B26-4579-873A-C239590E205E" /* UI */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -327,6 +330,7 @@
 				2D57316216B302E3D7BDC4B3 /* MoodCalendarView.swift in Sources */,
 				50571E81AC1DEEE5EF5AE1B5 /* MoodCheckinView.swift in Sources */,
 				A2248E3CC908134F50FE2AFE /* MoodModels.swift in Sources */,
+				6E91CDBBC7149EE1AF34C572 /* MoodSliderView.swift in Sources */,
 				D2A840BAE38AC0EA23E8FD51 /* MoodStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
