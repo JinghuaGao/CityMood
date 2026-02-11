@@ -90,7 +90,7 @@ struct CityHeatmapView: View {
                         center: mockBaseCoordinate,
                         span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                     )))
-                    .mapStyle(.hybrid(elevated: false))
+                    .mapStyle(.hybrid)
                     
                     // 心情热度覆盖层
                     ForEach(mockMoodZones) { zone in
