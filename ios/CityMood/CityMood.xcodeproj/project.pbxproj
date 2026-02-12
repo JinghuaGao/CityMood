@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,7 +46,7 @@
 		38BBE783057271A9E174A381 /* MoodSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSliderView.swift; sourceTree = "<group>"; };
 		4C8A3A2D3A9BB9355FB97803 /* MoodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCalendarView.swift; sourceTree = "<group>"; };
 		4D1F77CD45F975D2CBBB859C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		4E1426B0735033E8D4AAC2D3 /* CityMood.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CityMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E1426B0735033E8D4AAC2D3 /* CityMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1D130E898E2AB2CECCCE83 /* CityMoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMoodApp.swift; sourceTree = "<group>"; };
 		6764139F5A34C827E9111E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		688A26C9847675015142E4C8 /* CityHeatmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHeatmapView.swift; sourceTree = "<group>"; };
@@ -207,20 +207,6 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		"TEMP_31C3F082-9D21-4C85-A867-468C5C1AA277" /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		"TEMP_F269AC2D-7B26-4579-873A-C239590E205E" /* UI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,9 +276,6 @@
 					884BBBB3A451E5FA129B23D7 = {
 						TestTargetID = E268BC229317738639AF994C;
 					};
-					E268BC229317738639AF994C = {
-						DevelopmentTeam = "";
-					};
 				};
 			};
 			buildConfigurationList = D08A8DD050406F184E964E0B /* Build configuration list for PBXProject "CityMood" */;
@@ -305,7 +288,6 @@
 			);
 			mainGroup = 86660E1B7026AF684FDA1D1F;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -442,18 +424,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2LTF958Q57;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CityMood/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CityMood;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的位置来记录城市心情";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.citymood.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.citymood321.app;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -543,18 +531,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2LTF958Q57;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CityMood/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = CityMood;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的位置来记录城市心情";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.citymood.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.citymood321.app;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

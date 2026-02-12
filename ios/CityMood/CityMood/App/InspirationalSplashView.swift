@@ -11,29 +11,19 @@ import SwiftUI
 struct InspirationalSplashView: View {
     @State private var opacity: Double = 0.0
     @State private var scale: CGFloat = 0.3
-    @State private var showMainContent = false
     @State private var selectedQuote = Quote.random()
+    let onComplete: () -> Void
     
     var body: some View {
         ZStack {
             // Watercolor background (ink painting style)
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(red: 0.2, green: 0.3, blue: 0.5),  // Deep ink blue
-                    Color(red: 0.4, green: 0.5, blue: 0.7),  // Soft watercolor fade
-                    Color(red: 0.1, green: 0.2, blue: 0.4)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+            Image("SplashBackground")
+            .resizable()
+            .scaledToFill()
             .edgesIgnoringSafeArea(.all)
             .overlay(
-                // Subtle watercolor blobs for artistic effect
-                WatercolorBlob()
-                    .scaleEffect(1.2)
-                    .opacity(0.3)
-                    .blendMode(.overlay),
-                alignment: .bottomLeading
+                // Optional subtle overlay to darken a bit
+                Color.black.opacity(0.2)
             )
             
             VStack(spacing: 40) {
@@ -73,11 +63,8 @@ struct InspirationalSplashView: View {
         }
         .onTapGesture {
             withAnimation(.easeOut(duration: 0.8)) {
-                showMainContent = true
+                onComplete()
             }
-        }
-        .fullScreenCover(isPresented: $showMainContent) {
-            MainContentView()  // Replace with your actual main view
         }
     }
 }

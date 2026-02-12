@@ -4,10 +4,20 @@ import SwiftUI
 struct CityMoodApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @State private var showMainApp = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(MoodStore())
+            if showMainApp {
+                ContentView()
+                    .environmentObject(MoodStore())
+            } else {
+                InspirationalSplashView(onComplete: {
+                    withAnimation(.easeInOut(duration: 0.8)) {
+                        showMainApp = true
+                    }
+                })
+            }
         }
     }
 }
