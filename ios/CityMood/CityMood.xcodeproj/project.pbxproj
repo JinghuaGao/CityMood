@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2586983C054FE41AC616F38D /* CityHeatmapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688A26C9847675015142E4C8 /* CityHeatmapView.swift */; };
+		8A3F4B2E9D7C1E5F3B8A4D5C /* InspirationalSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E8D1A4F5C9B3E6A7D8F4E /* InspirationalSplashView.swift */; };
 		2D57316216B302E3D7BDC4B3 /* MoodCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8A3A2D3A9BB9355FB97803 /* MoodCalendarView.swift */; };
 		307F8D387D0DFC932A7E6370 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755E38C53CFA5190E5C2A5D /* ContentView.swift */; };
 		50571E81AC1DEEE5EF5AE1B5 /* MoodCheckinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81553025E5DE235EBBC6929 /* MoodCheckinView.swift */; };
@@ -50,6 +51,7 @@
 		5B1D130E898E2AB2CECCCE83 /* CityMoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMoodApp.swift; sourceTree = "<group>"; };
 		6764139F5A34C827E9111E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		688A26C9847675015142E4C8 /* CityHeatmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHeatmapView.swift; sourceTree = "<group>"; };
+		7B2E8D1A4F5C9B3E6A7D8F4E /* InspirationalSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationalSplashView.swift; sourceTree = "<group>"; };
 		7C01BEA4570548B4E2D5B293 /* MoodModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModels.swift; sourceTree = "<group>"; };
 		AC78F3672F42F5C368CE20EC /* MoodStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodStore.swift; sourceTree = "<group>"; };
 		B755E38C53CFA5190E5C2A5D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				5B1D130E898E2AB2CECCCE83 /* CityMoodApp.swift */,
 				B755E38C53CFA5190E5C2A5D /* ContentView.swift */,
+				7B2E8D1A4F5C9B3E6A7D8F4E /* InspirationalSplashView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				F3C85E6CA5638BF4F37145A3 /* CityMoodApp.swift in Sources */,
 				5219F9FB19D8F77B8D35CD06 /* CityRankingView.swift in Sources */,
 				307F8D387D0DFC932A7E6370 /* ContentView.swift in Sources */,
+				8A3F4B2E9D7C1E5F3B8A4D5C /* InspirationalSplashView.swift in Sources */,
 				986F14F1A4F6DDC530504319 /* LocationService.swift in Sources */,
 				2D57316216B302E3D7BDC4B3 /* MoodCalendarView.swift in Sources */,
 				50571E81AC1DEEE5EF5AE1B5 /* MoodCheckinView.swift in Sources */,
