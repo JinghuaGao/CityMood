@@ -1,11 +1,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var locationManager = LocationManager()
     @State private var selectedTab = 0
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            MoodSliderView()
+            MoodSliderView(locationManager: locationManager)
                 .tabItem {
                     Label("打卡", systemImage: "plus.circle.fill")
                 }
@@ -30,6 +31,9 @@ struct ContentView: View {
                 .tag(3)
         }
         .accentColor(.blue)
+        .onAppear {
+            locationManager.requestPermission()
+        }
     }
 }
 

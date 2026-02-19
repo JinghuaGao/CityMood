@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 63;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,10 +14,12 @@
 		5219F9FB19D8F77B8D35CD06 /* CityRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF99A34E1989A57E5FDB308 /* CityRankingView.swift */; };
 		6E91CDBBC7149EE1AF34C572 /* MoodSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BBE783057271A9E174A381 /* MoodSliderView.swift */; };
 		841EAF0621BF8C364264C831 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D98835B788E55C3525CD3D92 /* CoreLocation.framework */; };
-		8A3F4B2E9D7C1E5F3B8A4D5C /* InspirationalSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2E8D1A4F5C9B3E6A7D8F4E /* InspirationalSplashView.swift */; };
 		9011B74024816EAAFF8D4388 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5A2363FDAD614E250093BA /* APIService.swift */; };
 		986F14F1A4F6DDC530504319 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04507082CBDBA63CC4317E8F /* LocationService.swift */; };
+		9DC25E1EBDBF98291415F62A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0712F93E40636661F5E6074 /* LocationManager.swift */; };
 		A2248E3CC908134F50FE2AFE /* MoodModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C01BEA4570548B4E2D5B293 /* MoodModels.swift */; };
+		C217E0181B80D80A37F01D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9207FC962BBAB703632E1C77 /* Assets.xcassets */; };
+		C2C8251F06F90D7D61E4452A /* InspirationalSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3DF157182E68D01DEC091CF /* InspirationalSplashView.swift */; };
 		D2A840BAE38AC0EA23E8FD51 /* MoodStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC78F3672F42F5C368CE20EC /* MoodStore.swift */; };
 		D9857A37C09558193515C120 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1F77CD45F975D2CBBB859C /* MapKit.framework */; };
 		F3C85E6CA5638BF4F37145A3 /* CityMoodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1D130E898E2AB2CECCCE83 /* CityMoodApp.swift */; };
@@ -42,23 +44,25 @@
 
 /* Begin PBXFileReference section */
 		04507082CBDBA63CC4317E8F /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		1133D6F672DD654945B9C8AC /* CityMoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityMoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1133D6F672DD654945B9C8AC /* CityMoodUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CityMoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AF99A34E1989A57E5FDB308 /* CityRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRankingView.swift; sourceTree = "<group>"; };
 		38BBE783057271A9E174A381 /* MoodSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSliderView.swift; sourceTree = "<group>"; };
 		4C8A3A2D3A9BB9355FB97803 /* MoodCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCalendarView.swift; sourceTree = "<group>"; };
 		4D1F77CD45F975D2CBBB859C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		4E1426B0735033E8D4AAC2D3 /* CityMood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E1426B0735033E8D4AAC2D3 /* CityMood.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CityMood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B1D130E898E2AB2CECCCE83 /* CityMoodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMoodApp.swift; sourceTree = "<group>"; };
 		6764139F5A34C827E9111E67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		688A26C9847675015142E4C8 /* CityHeatmapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityHeatmapView.swift; sourceTree = "<group>"; };
-		7B2E8D1A4F5C9B3E6A7D8F4E /* InspirationalSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationalSplashView.swift; sourceTree = "<group>"; };
 		7C01BEA4570548B4E2D5B293 /* MoodModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodModels.swift; sourceTree = "<group>"; };
+		9207FC962BBAB703632E1C77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC78F3672F42F5C368CE20EC /* MoodStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodStore.swift; sourceTree = "<group>"; };
 		B755E38C53CFA5190E5C2A5D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B7A70480E43DC1AE3A97229A /* CityMoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityMoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7A70480E43DC1AE3A97229A /* CityMoodTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CityMoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0712F93E40636661F5E6074 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C81553025E5DE235EBBC6929 /* MoodCheckinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCheckinView.swift; sourceTree = "<group>"; };
 		D98835B788E55C3525CD3D92 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DE5A2363FDAD614E250093BA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		E3DF157182E68D01DEC091CF /* InspirationalSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspirationalSplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				DE5A2363FDAD614E250093BA /* APIService.swift */,
+				C0712F93E40636661F5E6074 /* LocationManager.swift */,
 				04507082CBDBA63CC4317E8F /* LocationService.swift */,
 				AC78F3672F42F5C368CE20EC /* MoodStore.swift */,
 			);
@@ -140,6 +145,7 @@
 				802BFA0A871B42D16E163ACE /* App */,
 				BACD220CBD9A7D7E6BBCA771 /* Core */,
 				A5EB6B0CEFD11A499A82F5B1 /* Features */,
+				C45DB9E9245D612E02BB7256 /* Resources */,
 			);
 			path = CityMood;
 			sourceTree = "<group>";
@@ -166,7 +172,7 @@
 			children = (
 				5B1D130E898E2AB2CECCCE83 /* CityMoodApp.swift */,
 				B755E38C53CFA5190E5C2A5D /* ContentView.swift */,
-				7B2E8D1A4F5C9B3E6A7D8F4E /* InspirationalSplashView.swift */,
+				E3DF157182E68D01DEC091CF /* InspirationalSplashView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -208,6 +214,21 @@
 				2D72F7BB1D4367BAE9A41A58 /* Services */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		C45DB9E9245D612E02BB7256 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9207FC962BBAB703632E1C77 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		"TEMP_CF576682-891A-4C10-9D68-C771E4BC0DA2" /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +275,7 @@
 			buildConfigurationList = 5CB7EE83E9C485C0298411E2 /* Build configuration list for PBXNativeTarget "CityMood" */;
 			buildPhases = (
 				238A405B1EE41DF59A7C3AFE /* Sources */,
+				193A8C932BC443C49D7AC826 /* Resources */,
 				22C9A21360E022F596DA0BEF /* Frameworks */,
 			);
 			buildRules = (
@@ -279,6 +301,9 @@
 					884BBBB3A451E5FA129B23D7 = {
 						TestTargetID = E268BC229317738639AF994C;
 					};
+					E268BC229317738639AF994C = {
+						DevelopmentTeam = "";
+					};
 				};
 			};
 			buildConfigurationList = D08A8DD050406F184E964E0B /* Build configuration list for PBXProject "CityMood" */;
@@ -291,6 +316,7 @@
 			);
 			mainGroup = 86660E1B7026AF684FDA1D1F;
 			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -300,6 +326,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		193A8C932BC443C49D7AC826 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C217E0181B80D80A37F01D88 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		238A405B1EE41DF59A7C3AFE /* Sources */ = {
@@ -311,7 +348,8 @@
 				F3C85E6CA5638BF4F37145A3 /* CityMoodApp.swift in Sources */,
 				5219F9FB19D8F77B8D35CD06 /* CityRankingView.swift in Sources */,
 				307F8D387D0DFC932A7E6370 /* ContentView.swift in Sources */,
-				8A3F4B2E9D7C1E5F3B8A4D5C /* InspirationalSplashView.swift in Sources */,
+				C2C8251F06F90D7D61E4452A /* InspirationalSplashView.swift in Sources */,
+				9DC25E1EBDBF98291415F62A /* LocationManager.swift in Sources */,
 				986F14F1A4F6DDC530504319 /* LocationService.swift in Sources */,
 				2D57316216B302E3D7BDC4B3 /* MoodCalendarView.swift in Sources */,
 				50571E81AC1DEEE5EF5AE1B5 /* MoodCheckinView.swift in Sources */,
@@ -389,7 +427,6 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -427,26 +464,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGNING_ALLOWED = YES;
-				CODE_SIGNING_REQUIRED = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2LTF958Q57;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CityMood/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = CityMood;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的位置来记录城市心情";
-				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.citymood123.app;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.citymood.app;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -490,7 +521,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -534,26 +565,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGNING_ALLOWED = YES;
-				CODE_SIGNING_REQUIRED = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2LTF958Q57;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CityMood/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = CityMood;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "需要您的位置来记录城市心情";
-				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.citymood123.app;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.citymood.app;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

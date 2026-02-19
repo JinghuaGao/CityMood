@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MoodSliderView: View {
+    @ObservedObject var locationManager: LocationManager
     @State private var moodValue: Double = 50
     @State private var isDragging = false
     
@@ -82,8 +83,20 @@ struct MoodSliderView: View {
             VStack(spacing: 40) {
                 Spacer()
                 
-                // 日期和标题
+                // 日期和标题 + 城市名
                 VStack(spacing: 8) {
+                    HStack {
+                        Image(systemName: "location.fill")
+                            .font(.system(size: 12))
+                        Text(locationManager.currentCity)
+                            .font(.system(size: 14, weight: .medium, design: .rounded))
+                        if locationManager.isLoading {
+                            ProgressView()
+                                .scaleEffect(0.7)
+                        }
+                    }
+                    .foregroundColor(.white.opacity(0.7))
+                    
                     Text("CITY MOOD")
                         .font(.system(size: 14, weight: .bold, design: .monospaced))
                         .tracking(8)
@@ -316,6 +329,6 @@ extension Color {
 
 struct MoodSliderView_Previews: PreviewProvider {
     static var previews: some View {
-        MoodSliderView()
+        MoodSliderView(locationManager: LocationManager())
     }
 }
