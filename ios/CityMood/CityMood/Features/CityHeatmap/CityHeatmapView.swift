@@ -3,9 +3,11 @@ import MapKit
 
 struct CityHeatmapView: View {
     @EnvironmentObject var store: MoodStore
+    @ObservedObject var locationManager: LocationManager
     @State private var selectedCity: String = "BJ"
     @State private var showHeatmapDetail = false
     @State private var selectedMoodZone: MoodZone?
+    @State private var mapRegion: MKCoordinateRegion
     
     let cities = [
         ("BJ", "北京", 39.9042, 116.4074),
@@ -15,6 +17,15 @@ struct CityHeatmapView: View {
         ("CD", "成都", 30.5728, 104.0668),
         ("HZ", "杭州", 30.2741, 120.1551)
     ]
+    
+    init(locationManager: LocationManager) {
+        self.locationManager = locationManager
+        let defaultCenter = CLLocationCoordinate2D(latitude: 39.9042, longitude: 116.4074)
+        self._mapRegion = State(initialValue: MKCoordinateRegion(
+            center: defaultCenter,
+            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        ))
+    }
     
     // 模拟心情热度区域数据
     private var mockMoodZones: [MoodZone] {
@@ -69,50 +80,60 @@ struct CityHeatmapView: View {
                     .padding()
                 
                 // 城市选择器 - 紧凑版
-                HStack(spacing: 8) {
-                    ForEach(cities, id: \.0) { city in
-                        CompactCityChip(
-                            code: city.0,
-                            name: city.1,
-                            isSelected: selectedCity == city.0
-                        ) {
-                            selectedCity = city.0
-                            loadCityMood()
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(cities, id: \.0) { city in
+                            CompactCityChip(
+                                code: city.0,
+                                name: city.1,
+                                isSelected: selectedCity == city.0
+                            ) {
+                                selectedCity = city.0
+                                loadCityMood()
+                            }
                         }
                     }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
                 .padding(.vertical, 8)
                 
                 // 地图区域 - 心情热度展示
-                ZStack {
-                    Map(coordinateRegion: .constant(MKCoordinateRegion(
-                        center: mockBaseCoordinate,
-                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                    )))
-                    .mapStyle(.standard)
-                    
-                    // 心情热度覆盖层
-                    ForEach(mockMoodZones) { zone in
-                        MoodZoneMarker(zone: zone)
-                            .onTapGesture {
-                                selectedMoodZone = zone
-                                showHeatmapDetail = true
+                GeometryReader { geo in
+                    ZStack {
+                        Map(coordinateRegion: $mapRegion, showsUserLocation: true)
+                            .mapStyle(.standard)
+                            .onChange(of: locationManager.currentLocation) { _, newLocation in
+                                if let loc = newLocation {
+                                    withAnimation {
+                                        mapRegion = MKCoordinateRegion(
+                                            center: loc.coordinate,
+                                            span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+                                        )
+                                    }
+                                }
                             }
+                        
+                        // 心情热度覆盖层
+                        ForEach(mockMoodZones) { zone in
+                            MoodZoneMarker(zone: zone)
+                                .onTapGesture {
+                                    selectedMoodZone = zone
+                                    showHeatmapDetail = true
+                                }
+                        }
                     }
+                    .cornerRadius(20, corners: [.topLeft, .topRight])
+                    .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: -5)
                 }
-                .frame(height: 400)
-                .cornerRadius(20, corners: [.topLeft, .topRight])
-                .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: -5)
+                .frame(minHeight: 300, maxHeight: .infinity)
                 
                 // 底部统计信息
                 MoodStatisticsView(zones: mockMoodZones)
                     .padding()
-                
-                Spacer()
             }
             .navigationTitle("心情热度")
             .navigationBarTitleDisplayMode(.large)
+            .navigationViewStyle(.stack)
             .sheet(isPresented: $showHeatmapDetail) {
                 if let zone = selectedMoodZone {
                     MoodZoneDetailView(zone: zone)
@@ -438,7 +459,7 @@ struct RoundedCorner: Shape {
 
 struct CityHeatmapView_Previews: PreviewProvider {
     static var previews: some View {
-        CityHeatmapView()
+        CityHeatmapView(locationManager: LocationManager())
             .environmentObject(MoodStore())
     }
 }

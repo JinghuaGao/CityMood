@@ -25,8 +25,10 @@ class MoodStore: ObservableObject {
     
     // MARK: - Methods
     func checkin(moodLevel: Int, tags: [String] = [], note: String? = nil) async {
-        isLoading = true
-        errorMessage = nil
+        await MainActor.run {
+            isLoading = true
+            errorMessage = nil
+        }
         
         let location = await locationService.getCurrentLocation()
         
@@ -49,17 +51,25 @@ class MoodStore: ObservableObject {
             if response.code == 201 {
                 await fetchRecentMoods()
             } else {
-                errorMessage = response.message
+                await MainActor.run {
+                    errorMessage = response.message
+                }
             }
         } catch {
-            errorMessage = error.localizedDescription
+            await MainActor.run {
+                errorMessage = error.localizedDescription
+            }
         }
         
-        isLoading = false
+        await MainActor.run {
+            isLoading = false
+        }
     }
     
     func fetchRecentMoods() async {
-        isLoading = true
+        await MainActor.run {
+            isLoading = true
+        }
         
         do {
             let response: APIResponse<[MoodRecord]> = try await apiService.get(
@@ -77,14 +87,20 @@ class MoodStore: ObservableObject {
                 }
             }
         } catch {
-            errorMessage = error.localizedDescription
+            await MainActor.run {
+                errorMessage = error.localizedDescription
+            }
         }
         
-        isLoading = false
+        await MainActor.run {
+            isLoading = false
+        }
     }
     
     func fetchCityMood(cityCode: String) async {
-        isLoading = true
+        await MainActor.run {
+            isLoading = true
+        }
         
         do {
             let response: APIResponse<CityMood> = try await apiService.get(
@@ -101,9 +117,13 @@ class MoodStore: ObservableObject {
                 }
             }
         } catch {
-            errorMessage = error.localizedDescription
+            await MainActor.run {
+                errorMessage = error.localizedDescription
+            }
         }
         
-        isLoading = false
+        await MainActor.run {
+            isLoading = false
+        }
     }
 }

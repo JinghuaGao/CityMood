@@ -4,32 +4,31 @@ struct CityRankingView: View {
     @State private var selectedTab = 0
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                // 分段控制器
-                Picker("榜单类型", selection: $selectedTab) {
-                    Text("最幸福").tag(0)
-                    Text("压力最大").tag(1)
-                    Text("全球").tag(2)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                
-                // 榜单内容
-                TabView(selection: $selectedTab) {
-                    HappiestCitiesView()
-                        .tag(0)
-                    
-                    StressedCitiesView()
-                        .tag(1)
-                    
-                    GlobalStatsView()
-                        .tag(2)
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+        VStack(spacing: 0) {
+            // 分段控制器
+            Picker("榜单类型", selection: $selectedTab) {
+                Text("最幸福").tag(0)
+                Text("压力最大").tag(1)
+                Text("全球").tag(2)
             }
-            .navigationTitle("城市排行")
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
+            
+            // 榜单内容
+            TabView(selection: $selectedTab) {
+                HappiestCitiesView()
+                    .tag(0)
+                
+                StressedCitiesView()
+                    .tag(1)
+                
+                GlobalStatsView()
+                    .tag(2)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }
+        .navigationTitle("城市排行")
+        .navigationViewStyle(.stack)
     }
 }
 

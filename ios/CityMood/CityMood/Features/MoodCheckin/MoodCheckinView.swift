@@ -2,53 +2,43 @@ import SwiftUI
 
 struct MoodCheckinView: View {
     @EnvironmentObject var store: MoodStore
-    @State private var selectedMood = 3
+    @State private var selectedMood: MoodLevel?
     @State private var selectedTags: Set<String> = []
     @State private var note = ""
     @State private var showSuccess = false
     
-    let moodOptions = [
-        (1, "😢", "难过", Color.red),
-        (2, "😕", "焦虑", Color.orange),
-        (3, "😐", "平静", Color.gray),
-        (4, "🙂", "开心", Color.green),
-        (5, "😄", "很棒", Color.blue)
-    ]
+    let moodLevels = MoodLevel.allCases
     
     let tagOptions = ["工作", "学习", "家庭", "健康", "天气", "社交", "休闲", "其他"]
     
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 24) {
-                    // 日期显示
+                VStack(spacing: 32) {
                     Text(todayString)
-                        .font(.headline)
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
                     
-                    // 心情选择器
-                    VStack(spacing: 16) {
-                        Text("今天心情怎么样？")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                        
-                        HStack(spacing: 16) {
-                            ForEach(moodOptions, id: \.0) { mood in
-                                MoodButton(
-                                    emoji: mood.1,
-                                    label: mood.2,
-                                    isSelected: selectedMood == mood.0,
-                                    color: mood.3
-                                ) {
-                                    withAnimation(.spring()) {
-                                        selectedMood = mood.0
-                                    }
-                                }
-                            }
+                    Text("此刻，你感觉如何？")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
+                    
+                    MoodCardGrid(
+                        moods: moodLevels,
+                        selectedMood: $selectedMood
+                    )
+                    
+                    if let mood = selectedMood {
+                        VStack(spacing: 8) {
+                            Text(mood.description)
+                                .font(.subheadline)
+                                .foregroundColor(mood.color)
+                                .transition(.scale.combined(with: .opacity))
                         }
+                        .animation(.spring(response: 0.3), value: selectedMood?.rawValue)
                     }
                     
-                    // 标签选择
                     VStack(alignment: .leading, spacing: 12) {
                         Text("影响因素")
                             .font(.headline)
@@ -65,9 +55,8 @@ struct MoodCheckinView: View {
                         }
                     }
                     
-                    // 日记输入
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("日记（可选）")
+                        Text("记录此刻（可选）")
                             .font(.headline)
                         
                         TextEditor(text: $note)
@@ -77,24 +66,23 @@ struct MoodCheckinView: View {
                             .cornerRadius(8)
                     }
                     
-                    // 提交按钮
                     Button(action: submit) {
                         HStack {
                             if store.isLoading {
                                 ProgressView()
                                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                             } else {
-                                Text("记录心情")
+                                Text(selectedMood == nil ? "先选择一个心情" : "记录心情")
                                     .font(.headline)
                             }
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
+                        .background(selectedMood != nil ? Color.accentColor : Color.gray)
                         .foregroundColor(.white)
                         .cornerRadius(12)
                     }
-                    .disabled(store.isLoading)
+                    .disabled(selectedMood == nil || store.isLoading)
                     
                     if let error = store.errorMessage {
                         Text(error)
@@ -105,8 +93,10 @@ struct MoodCheckinView: View {
                 .padding()
             }
             .navigationTitle("心情打卡")
-            .alert("打卡成功！", isPresented: $showSuccess) {
+            .alert("记录成功", isPresented: $showSuccess) {
                 Button("确定", role: .cancel) { }
+            } message: {
+                Text("你的心情已被记录")
             }
         }
     }
@@ -127,9 +117,10 @@ struct MoodCheckinView: View {
     }
     
     private func submit() {
+        guard let mood = selectedMood else { return }
         Task {
             await store.checkin(
-                moodLevel: selectedMood,
+                moodLevel: mood.rawValue,
                 tags: Array(selectedTags),
                 note: note.isEmpty ? nil : note
             )
@@ -139,37 +130,83 @@ struct MoodCheckinView: View {
                     showSuccess = true
                     note = ""
                     selectedTags.removeAll()
+                    selectedMood = nil
                 }
             }
         }
     }
 }
 
-// MARK: - MoodButton
-struct MoodButton: View {
-    let emoji: String
-    let label: String
+// MARK: - MoodCardGrid
+struct MoodCardGrid: View {
+    let moods: [MoodLevel]
+    @Binding var selectedMood: MoodLevel?
+    
+    private let columns = [
+        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12),
+        GridItem(.flexible(), spacing: 12)
+    ]
+    
+    var body: some View {
+        LazyVGrid(columns: columns, spacing: 12) {
+            ForEach(moods, id: \.rawValue) { mood in
+                MoodCard(
+                    mood: mood,
+                    isSelected: selectedMood == mood
+                ) {
+                    withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
+                        selectedMood = mood
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MARK: - MoodCard
+struct MoodCard: View {
+    let mood: MoodLevel
     let isSelected: Bool
-    let color: Color
     let action: () -> Void
     
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 4) {
-                Text(emoji)
-                    .font(.system(size: 40))
-                Text(label)
-                    .font(.caption)
-                    .foregroundColor(isSelected ? color : .secondary)
+            VStack(spacing: 8) {
+                ZStack {
+                    if isSelected {
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(
+                                LinearGradient(
+                                    colors: mood.gradientColors,
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .shadow(color: mood.color.opacity(0.4), radius: 8, x: 0, y: 4)
+                    } else {
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color(.systemGray6))
+                    }
+                    
+                    VStack(spacing: 4) {
+                        Text(mood.emoji)
+                            .font(.system(size: 32))
+                            .scaleEffect(isSelected ? 1.1 : 1.0)
+                        
+                        Text(mood.label)
+                            .font(.system(size: 14, weight: isSelected ? .semibold : .regular))
+                            .foregroundColor(isSelected ? .white : .primary)
+                    }
+                    .padding(.vertical, 16)
+                }
             }
-            .padding(.vertical, 8)
-            .frame(maxWidth: .infinity)
-            .background(isSelected ? color.opacity(0.15) : Color.clear)
-            .cornerRadius(12)
+            .frame(height: 100)
             .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(isSelected ? color : Color.clear, lineWidth: 2)
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(isSelected ? mood.color : Color.clear, lineWidth: 2)
             )
+            .animation(.spring(response: 0.3), value: isSelected)
         }
         .buttonStyle(PlainButtonStyle())
     }
@@ -185,11 +222,11 @@ struct TagButton: View {
         Button(action: action) {
             Text(text)
                 .font(.subheadline)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(isSelected ? Color.blue : Color(.systemGray6))
+                .padding(.horizontal, 14)
+                .padding(.vertical, 8)
+                .background(isSelected ? Color.accentColor : Color(.systemGray6))
                 .foregroundColor(isSelected ? .white : .primary)
-                .cornerRadius(16)
+                .cornerRadius(20)
         }
         .buttonStyle(PlainButtonStyle())
     }

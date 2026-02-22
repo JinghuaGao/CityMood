@@ -12,7 +12,7 @@ struct ContentView: View {
                 }
                 .tag(0)
             
-            CityHeatmapView()
+            CityHeatmapView(locationManager: locationManager)
                 .tabItem {
                     Label("地图", systemImage: "map.fill")
                 }
